@@ -13,7 +13,7 @@ interface OctopusOrderPaymentItemExpanderInterface
      *
      * @return \Generated\Shared\Transfer\OctopusOrderPaymentItemTransfer
      */
-    public function expandOctopusOrderPaymentItemTransferWithPayoneReference(
+    public function expandOctopusOrderPaymentItemTransferWithPayoneTransactionId(
         OctopusOrderPaymentItemTransfer $octopusOrderPaymentItemTransfer,
         PaymentTransfer $paymentTransfer
     ): OctopusOrderPaymentItemTransfer;

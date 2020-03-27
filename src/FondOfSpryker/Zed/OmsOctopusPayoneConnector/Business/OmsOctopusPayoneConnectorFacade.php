@@ -23,7 +23,7 @@ class OmsOctopusPayoneConnectorFacade extends AbstractFacade implements OmsOctop
     ): OctopusOrderPaymentItemTransfer {
         return $this->getFactory()
             ->creatOctopusOrderPaymentItemExpander()
-            ->expandOctopusOrderPaymentItemTransferWithPayoneReference(
+            ->expandOctopusOrderPaymentItemTransferWithPayoneTransactionId(
                 $octopusOrderPaymentItemTransfer,
                 $paymentTransfer
             );

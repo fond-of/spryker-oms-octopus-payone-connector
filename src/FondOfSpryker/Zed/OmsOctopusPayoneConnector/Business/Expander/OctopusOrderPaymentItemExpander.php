@@ -38,12 +38,13 @@ class OctopusOrderPaymentItemExpander implements OctopusOrderPaymentItemExpander
     }
 
     /**
-     * @param \FondOfSpryker\Zed\BrandCompany\Business\Expander\OctopusOrderPaymentItemTransfer $octopusOrderPaymentItemTransfer
-     * @param \FondOfSpryker\Zed\BrandCompany\Business\Expander\PaymentTransfer $paymentTransfer
+     * @param \Generated\Shared\Transfer\OctopusOrderPaymentItemTransfer $octopusOrderPaymentItemTransfer
+     * @param \Generated\Shared\Transfer\PaymentTransfer $paymentTransfer
+     * @return \Generated\Shared\Transfer\OctopusOrderPaymentItemTransfer
      *
-     * @return \FondOfSpryker\Zed\BrandCompany\Business\Expander\OctopusOrderPaymentItemTransfer
+     * @throws \Exception
      */
-    public function expandOctopusOrderPaymentItemTransferWithPayoneReference(
+    public function expandOctopusOrderPaymentItemTransferWithPayoneTransactionId(
         OctopusOrderPaymentItemTransfer $octopusOrderPaymentItemTransfer,
         PaymentTransfer $paymentTransfer
     ): OctopusOrderPaymentItemTransfer {
@@ -52,12 +53,11 @@ class OctopusOrderPaymentItemExpander implements OctopusOrderPaymentItemExpander
             return null;
         }
 
-        $octopusOrderPaymentItemTransfer->setReference($this->getPaymentReference($paymentTransfer));
+        $octopusOrderPaymentItemTransfer->setTransactionId($this->getPaymentTransactionId($paymentTransfer));
         $octopusOrderPaymentItemTransfer->addFee(
             $this->getFee($paymentTransfer)
         );
-
-        throw new \Exception($octopusOrderPaymentItemTransfer->serialize());
+        
         return $octopusOrderPaymentItemTransfer;
     }
 
@@ -82,11 +82,11 @@ class OctopusOrderPaymentItemExpander implements OctopusOrderPaymentItemExpander
     }
 
     /**
-     * @param \FondOfSpryker\Zed\OmsOctopusPayoneConnector\Business\Expander\PaymentReference $paymentReference
+     * @param \Generated\Shared\Transfer\PaymentTransfer $paymentTransfer
      *
      * @return string
      */
-    protected function getPaymentReference(PaymentTransfer $paymentTransfer): string
+    protected function getPaymentTransactionId(PaymentTransfer $paymentTransfer): string
     {
         $salesPaymentEntity = $this->getSalesPaymentEntityByIdSalesPayment($paymentTransfer->getIdSalesPayment());
             
