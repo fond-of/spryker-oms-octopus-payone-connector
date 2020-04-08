@@ -49,7 +49,9 @@ class OctopusOrderPaymentItemExpander implements OctopusOrderPaymentItemExpander
         PaymentTransfer $paymentTransfer
     ): OctopusOrderPaymentItemTransfer {
 
-        if ($paymentTransfer->getPaymentMethod() !== PayoneApiConstants::PAYMENT_METHOD_E_WALLET) {
+        if ($paymentTransfer->getPaymentMethod() !== PayoneApiConstants::PAYMENT_METHOD_E_WALLET
+            || $paymentTransfer->getPaymentMethod() !== PayoneApiConstants::PAYMENT_METHOD_CREDITCARD
+        ) {
             return $octopusOrderPaymentItemTransfer;
         }
 
