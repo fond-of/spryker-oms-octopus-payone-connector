@@ -14,12 +14,12 @@ use SprykerEco\Shared\Payone\PayoneApiConstants;
 class OctopusOrderPaymentItemExpander implements OctopusOrderPaymentItemExpanderInterface
 {
     /**
-     * @var \FondOfSpryker\Zed\OmsOctopusPayoneConnector\OmsOctopusPayoneConnectorConfig 
+     * @var \FondOfSpryker\Zed\OmsOctopusPayoneConnector\OmsOctopusPayoneConnectorConfig
      */
     protected $octopusPayoneConnectorConfig;
 
     /**
-     * @var \FondOfSpryker\Zed\OmsOctopusPayoneConnector\Persistence\OmsOctopusPayoneConnectorQueryContainerInterface 
+     * @var \FondOfSpryker\Zed\OmsOctopusPayoneConnector\Persistence\OmsOctopusPayoneConnectorQueryContainerInterface
      */
     protected $omsOctopusPayoneConnectorQueryContainer;
 
@@ -40,9 +40,8 @@ class OctopusOrderPaymentItemExpander implements OctopusOrderPaymentItemExpander
     /**
      * @param \Generated\Shared\Transfer\OctopusOrderPaymentItemTransfer $octopusOrderPaymentItemTransfer
      * @param \Generated\Shared\Transfer\PaymentTransfer $paymentTransfer
-     * @return \Generated\Shared\Transfer\OctopusOrderPaymentItemTransfer
      *
-     * @throws \Exception
+     * @return \Generated\Shared\Transfer\OctopusOrderPaymentItemTransfer
      */
     public function expandOctopusOrderPaymentItemTransferWithPayoneTransactionId(
         OctopusOrderPaymentItemTransfer $octopusOrderPaymentItemTransfer,
@@ -128,5 +127,4 @@ class OctopusOrderPaymentItemExpander implements OctopusOrderPaymentItemExpander
             ->queryPaymentPayoneByIdSalesOrder($idSalesOrder)
             ->findOne();
     }
-
 }

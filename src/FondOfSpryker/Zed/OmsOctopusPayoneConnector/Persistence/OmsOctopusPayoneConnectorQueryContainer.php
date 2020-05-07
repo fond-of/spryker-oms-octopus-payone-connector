@@ -2,9 +2,7 @@
 
 namespace FondOfSpryker\Zed\OmsOctopusPayoneConnector\Persistence;
 
-use FondOfSpryker\Zed\OmsOctopusPayoneConnector\Business\OmsOctopusPayoneConnectorFacadeInterface;
 use Orm\Zed\Payment\Persistence\SpySalesPaymentQuery;
-use Orm\Zed\Payone\Persistence\Base\SpyPaymentPayone;
 use Orm\Zed\Payone\Persistence\SpyPaymentPayoneQuery;
 use SprykerEco\Zed\Payone\Persistence\PayoneQueryContainer as SprykerEcoPayoneQueryContainer;
 
@@ -17,8 +15,6 @@ class OmsOctopusPayoneConnectorQueryContainer extends SprykerEcoPayoneQueryConta
      * @param int $idSalesPayment
      *
      * @return \Orm\Zed\Payment\Persistence\SpySalesPaymentQuery
-     *
-     * @throws \Spryker\Zed\Propel\Business\Exception\AmbiguousComparisonException
      */
     public function querySalesPaymentByIdSalesPayment(int $idSalesPayment): SpySalesPaymentQuery
     {
@@ -28,9 +24,8 @@ class OmsOctopusPayoneConnectorQueryContainer extends SprykerEcoPayoneQueryConta
 
     /**
      * @param int $idSalesOrder
+     *
      * @return \Orm\Zed\Payone\Persistence\SpyPaymentPayoneQuery
-     * 
-     * @throws \Spryker\Zed\Propel\Business\Exception\AmbiguousComparisonException
      */
     public function queryPaymentPayoneByIdSalesOrder(int $idSalesOrder): SpyPaymentPayoneQuery
     {
