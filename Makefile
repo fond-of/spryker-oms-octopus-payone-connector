@@ -16,7 +16,7 @@ phpcbf:
 	./vendor/bin/phpcbf --standard=./vendor/spryker/code-sniffer/Spryker/ruleset.xml ./src/
 
 phpstan:
-	./vendor/bin/phpstan analyse -l 7 ./src
+	./vendor/bin/phpstan analyse -l 4 ./src
 
 codeception:
 	./vendor/bin/codecept run --coverage --coverage-xml --coverage-html
