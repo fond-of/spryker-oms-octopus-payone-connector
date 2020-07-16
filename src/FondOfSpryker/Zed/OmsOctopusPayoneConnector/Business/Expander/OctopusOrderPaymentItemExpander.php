@@ -93,13 +93,13 @@ class OctopusOrderPaymentItemExpander implements OctopusOrderPaymentItemExpander
         $salesPaymentEntity = $this->getSalesPaymentEntityByIdSalesPayment($paymentTransfer->getIdSalesPayment());
 
         if ($salesPaymentEntity === null) {
-            return "";
+            return '';
         }
 
         $paymentPayoneEntity = $this->getPaymentPayoneEntityByIdSalesOrder($salesPaymentEntity->getFkSalesOrder());
 
         if ($paymentPayoneEntity === null) {
-            return "";
+            return '';
         }
 
         return $paymentPayoneEntity->getTransactionId();
