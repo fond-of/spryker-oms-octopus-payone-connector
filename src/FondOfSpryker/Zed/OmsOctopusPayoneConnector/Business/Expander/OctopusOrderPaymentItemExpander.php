@@ -14,12 +14,12 @@ use SprykerEco\Shared\Payone\PayoneApiConstants;
 class OctopusOrderPaymentItemExpander implements OctopusOrderPaymentItemExpanderInterface
 {
     /**
-     * @var \FondOfSpryker\Zed\OmsOctopusPayoneConnector\OmsOctopusPayoneConnectorConfig 
+     * @var \FondOfSpryker\Zed\OmsOctopusPayoneConnector\OmsOctopusPayoneConnectorConfig
      */
     protected $octopusPayoneConnectorConfig;
 
     /**
-     * @var \FondOfSpryker\Zed\OmsOctopusPayoneConnector\Persistence\OmsOctopusPayoneConnectorQueryContainerInterface 
+     * @var \FondOfSpryker\Zed\OmsOctopusPayoneConnector\Persistence\OmsOctopusPayoneConnectorQueryContainerInterface
      */
     protected $omsOctopusPayoneConnectorQueryContainer;
 
@@ -50,7 +50,7 @@ class OctopusOrderPaymentItemExpander implements OctopusOrderPaymentItemExpander
     ): OctopusOrderPaymentItemTransfer {
 
         if ($paymentTransfer->getPaymentMethod() !== PayoneApiConstants::PAYMENT_METHOD_E_WALLET
-            || $paymentTransfer->getPaymentMethod() !== PayoneApiConstants::PAYMENT_METHOD_CREDITCARD
+            && $paymentTransfer->getPaymentMethod() !== PayoneApiConstants::PAYMENT_METHOD_CREDITCARD
         ) {
             return $octopusOrderPaymentItemTransfer;
         }
@@ -59,7 +59,7 @@ class OctopusOrderPaymentItemExpander implements OctopusOrderPaymentItemExpander
         $octopusOrderPaymentItemTransfer->addFee(
             $this->getFee($paymentTransfer)
         );
-        
+
         return $octopusOrderPaymentItemTransfer;
     }
 
@@ -91,7 +91,7 @@ class OctopusOrderPaymentItemExpander implements OctopusOrderPaymentItemExpander
     protected function getPaymentTransactionId(PaymentTransfer $paymentTransfer): string
     {
         $salesPaymentEntity = $this->getSalesPaymentEntityByIdSalesPayment($paymentTransfer->getIdSalesPayment());
-            
+
         if ($salesPaymentEntity === null) {
             return "";
         }
