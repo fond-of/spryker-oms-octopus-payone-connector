@@ -11,7 +11,7 @@
   "require": {
     "php": ">=7.2",
     "fond-of-spryker/oms-octopus-connector-extension": "dev-master",
-    "spryker-eco/payone": "^3.1.0",
+    "spryker-eco/payone": "^4.0.0",
     "spryker/oms": "^11.4"
   },
   "require-dev": {
