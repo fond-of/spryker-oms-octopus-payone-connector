@@ -2,7 +2,6 @@
 
 namespace FondOfSpryker\Zed\OmsOctopusPayoneConnector\Business;
 
-use Generated\Shared\Transfer\CompanyBrandRelationTransfer;
 use Generated\Shared\Transfer\OctopusOrderPaymentItemTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
 
@@ -23,5 +22,4 @@ interface OmsOctopusPayoneConnectorFacadeInterface
         OctopusOrderPaymentItemTransfer $octopusOrderPaymentItemTransfer,
         PaymentTransfer $paymentTransfer
     ): OctopusOrderPaymentItemTransfer;
-
 }

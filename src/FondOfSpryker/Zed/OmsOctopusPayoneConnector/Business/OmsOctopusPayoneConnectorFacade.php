@@ -2,7 +2,6 @@
 
 namespace FondOfSpryker\Zed\OmsOctopusPayoneConnector\Business;
 
-use FondOfSpryker\Zed\OmsOctopusConnectorExtension\Dependency\Plugin\OctopusOrderPaymentItemTransferExpanderPluginInterface;
 use Generated\Shared\Transfer\OctopusOrderPaymentItemTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
@@ -13,9 +12,15 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
 class OmsOctopusPayoneConnectorFacade extends AbstractFacade implements OmsOctopusPayoneConnectorFacadeInterface
 {
     /**
-     * @param \Generated\Shared\Transfer\BrandTransfer $brandTransfer
+     * Specification:
+     * - Expands OctopusOrderPaymentItemTransfer transfer with Payone Data
      *
-     * @return \Generated\Shared\Transfer\BrandTransfer
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\OctopusOrderPaymentItemTransfer $octopusOrderPaymentItemTransfer
+     * @param \Generated\Shared\Transfer\PaymentTransfer $paymentTransfer
+     *
+     * @return \Generated\Shared\Transfer\OctopusOrderPaymentItemTransfer
      */
     public function expandOctopusOrderPaymentItemTransfer(
         OctopusOrderPaymentItemTransfer $octopusOrderPaymentItemTransfer,

@@ -4,11 +4,12 @@ namespace FondOfSpryker\Zed\OmsOctopusPayoneConnector\Persistence;
 
 use Orm\Zed\Payment\Persistence\SpySalesPaymentQuery;
 use Orm\Zed\Payone\Persistence\SpyPaymentPayoneQuery;
-use Orm\Zed\Sales\Persistence\SpySalesOrderItemMetadataQuery;
 use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
-use Spryker\Zed\SalesProductConnector\SalesProductConnectorDependencyProvider;
 
-
+/**
+ * @method \FondOfSpryker\Zed\OmsOctopusPayoneConnector\OmsOctopusPayoneConnectorConfig getConfig()
+ * @method \FondOfSpryker\Zed\OmsOctopusPayoneConnector\Persistence\OmsOctopusPayoneConnectorQueryContainerInterface getQueryContainer()
+ */
 class OmsOctopusPayoneConnectorPersistenceFactory extends AbstractPersistenceFactory
 {
     /**

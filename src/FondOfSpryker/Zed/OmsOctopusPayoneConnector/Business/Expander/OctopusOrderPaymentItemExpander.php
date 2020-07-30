@@ -24,8 +24,6 @@ class OctopusOrderPaymentItemExpander implements OctopusOrderPaymentItemExpander
     protected $omsOctopusPayoneConnectorQueryContainer;
 
     /**
-     * OctopusOrderPaymentItemExpander constructor.
-     *
      * @param \FondOfSpryker\Zed\OmsOctopusPayoneConnector\OmsOctopusPayoneConnectorConfig $octopusPayoneConnectorConfig
      * @param \FondOfSpryker\Zed\OmsOctopusPayoneConnector\Persistence\OmsOctopusPayoneConnectorQueryContainerInterface $omsOctopusPayoneConnectorQueryContainer
      */
@@ -40,16 +38,15 @@ class OctopusOrderPaymentItemExpander implements OctopusOrderPaymentItemExpander
     /**
      * @param \Generated\Shared\Transfer\OctopusOrderPaymentItemTransfer $octopusOrderPaymentItemTransfer
      * @param \Generated\Shared\Transfer\PaymentTransfer $paymentTransfer
-     * @return \Generated\Shared\Transfer\OctopusOrderPaymentItemTransfer
      *
-     * @throws \Exception
+     * @return \Generated\Shared\Transfer\OctopusOrderPaymentItemTransfer
      */
     public function expandOctopusOrderPaymentItemTransferWithPayoneTransactionId(
         OctopusOrderPaymentItemTransfer $octopusOrderPaymentItemTransfer,
         PaymentTransfer $paymentTransfer
     ): OctopusOrderPaymentItemTransfer {
-
-        if ($paymentTransfer->getPaymentMethod() !== PayoneApiConstants::PAYMENT_METHOD_E_WALLET
+        if (
+            $paymentTransfer->getPaymentMethod() !== PayoneApiConstants::PAYMENT_METHOD_E_WALLET
             && $paymentTransfer->getPaymentMethod() !== PayoneApiConstants::PAYMENT_METHOD_CREDITCARD
         ) {
             return $octopusOrderPaymentItemTransfer;
@@ -92,17 +89,13 @@ class OctopusOrderPaymentItemExpander implements OctopusOrderPaymentItemExpander
     {
         $salesPaymentEntity = $this->getSalesPaymentEntityByIdSalesPayment($paymentTransfer->getIdSalesPayment());
 
-        if ($salesPaymentEntity === null) {
-            return '';
-        }
-
         $paymentPayoneEntity = $this->getPaymentPayoneEntityByIdSalesOrder($salesPaymentEntity->getFkSalesOrder());
 
-        if ($paymentPayoneEntity === null) {
+        if ($paymentPayoneEntity->getTransactionId() === null) {
             return '';
         }
 
-        return $paymentPayoneEntity->getTransactionId();
+        return (string)$paymentPayoneEntity->getTransactionId();
     }
 
     /**
@@ -128,5 +121,4 @@ class OctopusOrderPaymentItemExpander implements OctopusOrderPaymentItemExpander
             ->queryPaymentPayoneByIdSalesOrder($idSalesOrder)
             ->findOne();
     }
-
 }

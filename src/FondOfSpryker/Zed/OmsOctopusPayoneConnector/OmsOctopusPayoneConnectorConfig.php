@@ -8,7 +8,7 @@ use Spryker\Zed\Kernel\AbstractBundleConfig;
 class OmsOctopusPayoneConnectorConfig extends AbstractBundleConfig
 {
     /**
-     * @return bool
+     * @return int
      */
     public function getFeeAmount(): int
     {
